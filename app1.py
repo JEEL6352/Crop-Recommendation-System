@@ -64,7 +64,15 @@ if (option == "Login"):
     if st.sidebar.checkbox("LOGIN"):
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
         if re.fullmatch(regex, Email):
-            if login_user(Email,password):
+            if Email=="a@a.com" and password=="123":
+                Email1=st.text_input("Delete Email")
+                st.button('Delete')
+                delete_user(Email1)
+                user_result = view_all_users()
+                clean_db = pd.DataFrame(user_result,columns=["FirstName","LastName","Mobile","City","Email","password","Cpassword"])
+                st.dataframe(clean_db)
+                
+            elif login_user(Email,password):
                 
                 st.success("Logged In as {}".format(Email))
                 N=st.slider("Enter Vaue of N",0.0,140.0)

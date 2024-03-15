@@ -18,3 +18,11 @@ print(model.predict([[N,P,K,T,H,PH,R]]))
 
 model=pickle.load(open("model-dt-crop.pkl","rb"))
 print(model.predict([[N,P,K,T,H,PH,R]]))
+
+model=pickle.load(open("model-et-crop.pkl","rb"))
+print(model.predict([[N,P,K,T,H,PH,R]]))
+
+model=pickle.load(open("model-nb-crop.pkl","rb"))
+print(model.predict([[N,P,K,T,H,PH,R]]))
+
+

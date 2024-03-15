@@ -1,3 +1,4 @@
+import sklearn
 import streamlit as st
 import pandas as pd
 import sqlite3
@@ -98,7 +99,14 @@ if (option == "Login"):
                         data=[float(N),float(P),float(K),float(TP),float(HD),float(PH),float(RF)]
                         model=pickle.load(open("model-dt-crop.pkl","rb"))
                         st.success(model.predict([data])[0])
-                        
+                    elif Algo==e:
+                        data=[float(N),float(P),float(K),float(TP),float(HD),float(PH),float(RF)]
+                        model=pickle.load(open("model-et-crop.pkl","rb"))
+                        st.success(model.predict([data])[0])
+                    elif Algo==f:
+                        data=[float(N),float(P),float(K),float(TP),float(HD),float(PH),float(RF)]
+                        model=pickle.load(open("model-nb-crop.pkl","rb"))
+                        st.success(model.predict([data])[0])
                     
             else:
                 st.error("Wrong Details")

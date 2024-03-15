@@ -64,7 +64,7 @@ if (option == "Login"):
     if st.sidebar.checkbox("LOGIN"):
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
         if re.fullmatch(regex, Email):
-            if Email=="a@a.com" and password=="123":
+            if Email=="admin5911@gmail.com" and password=="5911":
                 Email1=st.text_input("Delete Email")
                 st.button('Delete')
                 delete_user(Email1)

@@ -1,4 +1,3 @@
-import sklearn
 import streamlit as st
 import pandas as pd
 import sqlite3
@@ -7,6 +6,7 @@ import pickle
 conn = sqlite3.connect('data.db')
 c = conn.cursor()
 
+st.set_page_config(page_title="Crop Recommendation", page_icon="fevicon.png", layout="centered", initial_sidebar_state="auto", menu_items=None)
 # Database Functions
 
 def create_usertable():
@@ -25,12 +25,40 @@ def view_all_users():
 def delete_user(Email):
     c.execute("DELETE FROM usertable WHERE Email="+"'"+Email+"'")
     conn.commit()
-    
+def set_bg_hack_url():
+    '''
+    A function to unpack an image from url and set as bg.
+    Returns
+    -------
+    The background.
+    '''
+        
+    st.markdown(
+          f"""
+          <style>
+          .stApp {{
+              background: url("https://szmagro.hu/images/s3.jpg");
+              background-size: cover
+          }}
+          </style>
+          """,
+          unsafe_allow_html=True
+      )
+set_bg_hack_url()  
 
 option = st.sidebar.selectbox("Select",["Home","Signup","Login","Contact Us"])
 
+
 if (option == "Home"):
-    st.title("CROP RECOMMENDATION SYSTEM")
+   st.markdown(
+       """
+       <h2 style="color:white">Welcome to Crop Recommendation</h2>
+       <h1>    </h1>
+       <p align="justify">
+       <b style="color:white">Indian economy is contributed heavily by agriculture. Most of the Indian farmers rely on their instincts to decide the crop to be sown at a particular time of year. They do not realize that the crop output is circumstantial, and depended heavily on the present-day weather and soil conditions. A single uninformed decision by the farmer can have undesirable consequences on the economic conditions of the region and also mental and financial impacts on the farmer himself. Applying systematic Machine Learning models will effectively help to alleviate this issue. The dataset used in the project is built by adding up the datasets of India's rainfall, climate, and Soil. Machine learning models will be used on the dataset to get the highest accuracy model to recommend a crop for the farm's location. This recommendation will help the farmers in India to make learned decisions about the crops. The recommendation will take into account the parameters like the farm's location, sowing season, soil properties, and climate.</b>
+       </p>
+       """
+       ,unsafe_allow_html=True)
     
     
 if (option == "Signup"):

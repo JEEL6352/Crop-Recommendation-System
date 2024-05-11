@@ -6,8 +6,8 @@ import pickle
 conn = sqlite3.connect('data.db')
 c = conn.cursor()
 
-st.set_page_config(page_title="Crop Recommendation", page_icon="fevicon.png", layout="centered", initial_sidebar_state="auto", menu_items=None)
-# Database Functions
+st.set_page_config(page_title="Crop Recommendation", page_icon="fevicon.png", layout="centered", initial_sidebar_state="auto", menu_items=None)# Database Functions
+#Database Functions
 
 def create_usertable():
     c.execute('CREATE TABLE IF NOT EXISTS usertable(FirstName TEXT,LastName TEXT,Mobile TEXT,City TEXT,Email TEXT,password TEXT,Cpassword TEXT)')
@@ -53,10 +53,10 @@ if (option == "Home"):
    st.markdown(
        """
        <h2 style="color:white">Welcome to Crop Recommendation</h2>
-       <h1>    </h1>
-       <p align="justify">
-       <h5><b style="color:white">Indian economy is contributed heavily by agriculture. Most of the Indian farmers rely on their instincts to decide the crop to be sown at a particular time of year. They do not realize that the crop output is circumstantial, and depended heavily on the present-day weather and soil conditions. A single uninformed decision by the farmer can have undesirable consequences on the economic conditions of the region and also mental and financial impacts on the farmer himself. Applying systematic Machine Learning models will effectively help to alleviate this issue. The dataset used in the project is built by adding up the datasets of India's rainfall, climate, and Soil. Machine learning models will be used on the dataset to get the highest accuracy model to recommend a crop for the farm's location. This recommendation will help the farmers in India to make learned decisions about the crops. The recommendation will take into account the parameters like the farm's location, sowing season, soil properties, and climate.</b></h5>
-       </p>
+      <h1>    </h1>
+      <p align="justify">
+      <h5><b style="color:white">Indian economy is contributed heavily by agriculture. Most of the Indian farmers rely on their instincts to decide the crop to be sown at a particular time of year. They do not realize that the crop output is circumstantial, and depended heavily on the present-day weather and soil conditions. A single uninformed decision by the farmer can have undesirable consequences on the economic conditions of the region and also mental and financial impacts on the farmer himself. Applying systematic Machine Learning models will effectively help to alleviate this issue. The dataset used in the project is built by adding up the datasets of India's rainfall, climate, and Soil. Machine learning models will be used on the dataset to get the highest accuracy model to recommend a crop for the farm's location. This recommendation will help the farmers in India to make learned decisions about the crops. The recommendation will take into account the parameters like the farm's location, sowing season, soil properties, and climate.</b></h5>
+      </p>
        """
        ,unsafe_allow_html=True)
     
@@ -93,9 +93,9 @@ if (option == "Login"):
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
         if re.fullmatch(regex, Email):
             if Email=="admin5911@gmail.com" and password=="5911":
-                Email1=st.text_input("Delete Email")
+                Email=st.text_input("Delete Email")
                 st.button('Delete')
-                delete_user(Email1)
+                delete_user(Email)
                 user_result = view_all_users()
                 clean_db = pd.DataFrame(user_result,columns=["FirstName","LastName","Mobile","City","Email","password","Cpassword"])
                 st.dataframe(clean_db)
@@ -103,20 +103,20 @@ if (option == "Login"):
             elif login_user(Email,password):
                 
                 st.success("Logged In as {}".format(Email))
-                N=st.slider("Enter Vaue of N",0.0,140.0)
-                P=st.slider("Enter Value of P",5.0,145.0)
-                K=st.slider("Enter Value of K",5.0,205.0)
-                TP=st.slider("Enter Value of TP",8.0,45.0)
-                HD=st.slider("Enter Value of HD",14.0,100.0)
+                N=st.slider("Enter Vaue of Nitrogen",0.0,140.0)
+                P=st.slider("Enter Value of Phosphorus",5.0,145.0)
+                K=st.slider("Enter Value of Potassium",5.0,205.0)
+                TP=st.slider("Enter Value of Temperature",8.0,45.0)
+                HD=st.slider("Enter Value of Humidity",14.0,100.0)
                 PH=st.slider("Enter Value of PH",3.0,10.0)
-                RF=st.slider("Enter Value of RF",20.0,300.0)
-                Algo=st.selectbox("Algorithms:",["SVM","RF","KNN","DT","ET","NB"])
-                a="SVM" 
-                b="RF"
-                c="KNN"
-                d="DT"                
-                e="ET"
-                f="NB"
+                RF=st.slider("Enter Value of Rain Fall",20.0,300.0)
+                Algo=st.selectbox("Algorithms:",["Support Vector Machine","Random Forest","K Nearest Neighbour","Decision Tree","Extra Tree","Naive Bayes"])
+                a="Support Vector Machine" 
+                b="Random Forest"
+                c="K Nearest Neighbour"
+                d="Decision Tree"                
+                e="Extra Tree"
+                f="Naive Bayes"
                 
                 if st.button("Predict"):
                     if Algo==a:
@@ -151,13 +151,15 @@ if (option == "Login"):
         
 
 if (option == "Contact Us"):
-     st.markdown(
-        """
-<p>
-        <h5 style="color:white">Jeel K. Patel</h2>
-        <h5 style="color:white">RAJPUT SAHITYARAJ </h5>
-        <h5 style="color:white">Email Id: xyz@gmail.com</h5>
-        <h5 style="color:white">Mobile Number: 6352859917</h5>
-        </p>
-        """
-        ,unsafe_allow_html=True)  
+    st.text("JEEL K. PATEL")
+    st.text("pateljeel7016@gmail.com")
+    st.text("6352859917")
+    st.text("")
+    st.text("")
+    st.text("")
+    st.text("")
+    st.text("")
+    st.text("")
+    st.text("RAJPUT SAHITYARAJ")
+    st.text("rajputsonu3055@gmail.com")
+    st.text("9408351541")
